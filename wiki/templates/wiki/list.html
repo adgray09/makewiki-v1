@@ -1,4 +1,8 @@
 <h1>List View</h1>
-{% for Page in object_list %}
-    <h1>{{ Page.title }}</h1>
+{% for page in object_list %}
+<ul>
+    <li>
+        <a href="{{ page.slug }}">{{ page.title }}</a>
+    </li>
+</ul>
 {% endfor %}

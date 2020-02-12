@@ -27,7 +27,7 @@ CHALLENGES:
 urlpatterns = [
     # Admin Site
     path('admin/', admin.site.urls),
-    path('', views.PageList.as_view(), name='home'),
+    path('', views.PageListView.as_view(), name='home'),
     path('', include('wiki.urls'))
     
     # Wiki App

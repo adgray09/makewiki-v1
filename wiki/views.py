@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
 
-class PageList(ListView):
+class PageListView(ListView):
     """
     CHALLENGES:
       1. On GET, display a homepage that shows all Pages in your wiki.
@@ -12,7 +12,6 @@ class PageList(ListView):
       3. Replace pass below with the code to render a template named `list.html`.
     """
     model = Page
-
     def get(self, request):
         """ Returns a list of wiki pages. """
         return render(request, 'wiki/list.html', {'object_list': Page.objects.all()})
@@ -33,13 +32,17 @@ class PageDetailView(DetailView):
         - If False, display all the errors in the template, above the form fields.
       4. Instead of hard-coding the path to redirect to, use the `reverse` function to return the path.
       5. After successfully editing a Page, use Django Messages to "flash" the user a success message
-           - Message Content: REPLACE_WITH_PAGE_TITLE has been successfully updated.
+          - Message Content: REPLACE_WITH_PAGE_TITLE has been successfully updated.
     """
     model = Page
 
     def get(self, request, slug):
         """ Returns a specific of wiki page by slug. """
-        pass
+        page = Page.objects.get(slug=slug)
+        
+        context= { 'page': page }
 
+        return render(request, 'wiki/page-detail.html', context)
+      
     def post(self, request, slug):
         pass
