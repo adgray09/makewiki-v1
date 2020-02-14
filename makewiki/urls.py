@@ -29,7 +29,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.PageListView.as_view(), name='home'),
     path('', include('wiki.urls'))
-    
-    # Wiki App
-    # path('REPLACE_ME_WITH_ROUTE', include(REPLACE_ME_WITH_APP_URLS)),
 ]
